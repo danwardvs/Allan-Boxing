@@ -20,12 +20,16 @@ void abort_on_error(const char *message){
 
 void update(){
 
-    bool left_punch;
-    bool right_punch;
+    bool left_punch=false;
+    bool right_punch=false;
     draw_sprite(buffer,shithead,0,0);
-    draw_sprite(buffer,shithead_beater_left,-10,420);
-    draw_sprite(buffer,shithead_beater_right,600,450);
-    if(mouse_b & 1)
+    if(mouse_b & 1)left_punch=true;
+    if(mouse_b & 2)right_punch=true;
+
+    if(!left_punch)draw_sprite(buffer,shithead_beater_left,-10,420);
+    if(left_punch)draw_sprite(buffer,shithead_beater_left,100,300);
+    if(!right_punch)draw_sprite(buffer,shithead_beater_right,600,450);
+    if(right_punch)draw_sprite(buffer,shithead_beater_right,500,330);
 
 
     draw_sprite(screen,buffer,0,0);
