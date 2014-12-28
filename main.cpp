@@ -9,6 +9,7 @@ BITMAP* blood;
 BITMAP* explosion;
 
 SAMPLE* blood_sound;
+SAMPLE* explosion_sound;
 
 
 //A function to streamline error reporting in file loading
@@ -27,7 +28,6 @@ void update(){
 
     bool left_punch=false;
     bool right_punch=false;
-    bool middle_punch=false;
     draw_sprite(buffer,shithead,0,0);
     if(mouse_b & 1)left_punch=true;
     if(mouse_b & 2)right_punch=true;
@@ -42,7 +42,7 @@ void update(){
     if(!right_punch)draw_sprite(buffer,shithead_beater_right,600,450);
     if(right_punch)draw_sprite(buffer,shithead_beater_right,500,330);
     if(right_punch)draw_sprite(buffer,explosion,200,0);
-
+    if(right_punch)play_sample(blood_sound,125,125,1000,0);
 
     draw_sprite(screen,buffer,0,0);
 
